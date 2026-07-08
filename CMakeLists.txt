@@ -14,7 +14,9 @@ add_executable(IndustryGame)
 target_sources(
     IndustryGame PRIVATE
     src/main.cpp
-    src/game/game.h
+    src/game/game.hpp
+    src/core/color.hpp
+    src/rendering/irenderer.hpp
 )
 
 target_include_directories(IndustryGame PRIVATE src)
