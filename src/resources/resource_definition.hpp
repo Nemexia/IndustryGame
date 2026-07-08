@@ -1,16 +1,10 @@
 #pragma once
-
+#include "../core/color.hpp"
 namespace industry_game
 {
-enum class ResourceType
-{
-    Mine,
-    Factory,
-    Truck,
-};
 struct ResourceDefinition
 {
-    ResourceType type;
     const char* name;
+    Color color;
 };
 } // namespace industry_game
