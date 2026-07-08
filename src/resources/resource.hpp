@@ -6,6 +6,6 @@ namespace industry_game
 struct Resource
 {
     ResourceDefinition& definition;
-    int amount;
+    double amount;
 };
 } // namespace industry_game
