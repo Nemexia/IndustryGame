@@ -17,6 +17,7 @@ target_sources(
     src/game/game.hpp
     src/core/color.hpp
     src/rendering/irenderer.hpp
+    src/resources/resource_definition.hpp
 )
 
 target_include_directories(IndustryGame PRIVATE src)
