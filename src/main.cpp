@@ -1,7 +1,9 @@
 #include "game/game.hpp"
+#include "rendering/raylib_renderer.hpp"
 
 int main()
 {
-    industry_game::Game game;
+    industry_game::RaylibRenderer raylib_graphic_renderer;
+    industry_game::Game game{"IndustryGame", &raylib_graphic_renderer, 800, 450, 60};
     game.run();
 }

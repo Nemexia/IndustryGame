@@ -14,20 +14,25 @@ add_executable(IndustryGame)
 target_sources(
     IndustryGame PRIVATE
     src/main.cpp
+    src/game/game.cpp
     src/game/game.hpp
+    src/game/world.hpp
     src/core/color.hpp
+    src/core/id.hpp
+    src/core/position.hpp
     src/rendering/irenderer.hpp
+    src/rendering/raylib_renderer.cpp
+    src/rendering/raylib_renderer.hpp
+    src/rendering/world_renderer.hpp
     src/resources/resource_definition.hpp
     src/resources/resource.hpp
     src/resources/resource_storage.hpp
-    src/buildings/building_definition.hpp
-    src/trucks/truck_definition.hpp
     src/resources/resource_processor.hpp
-    src/rendering/raylib_renderer.hpp
-    src/rendering/world_renderer.hpp
-    src/game/world.hpp
+    src/trucks/truck_definition.hpp
+    src/trucks/truck.hpp
+    src/buildings/building_definition.hpp
     src/buildings/building.hpp
-)
+    )
 
 target_include_directories(IndustryGame PRIVATE src)
 

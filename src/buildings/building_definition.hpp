@@ -1,43 +1,57 @@
 #pragma once
 #include "../resources/resource_processor.hpp"
 #include "../trucks/truck_definition.hpp"
+#include "resources/resource.hpp"
+#include "resources/resource_definition.hpp"
+#include "resources/resource_storage.hpp"
 
 #include <vector>
 
 namespace industry_game
 {
+enum class BuildingType : std::uint8_t
+{
+    CoalMine,
+    IronOreMine,
+    SteelMine,
+    count,
+};
 struct BuildingDefinition
 {
     const char* name;
     double size;
     double efficiency;
     std::vector<ResourceProcessor> resource_processors;
-    std::vector<const TruckDefinition*> truck_definitions;
+    std::vector<TruckType> truck_types;
 };
 
-namespace building
+const std::array<BuildingDefinition, static_cast<std::size_t>(BuildingType::count)>
+    building_definitions = {
+        {BuildingDefinition{
+             "Coal Mine",
+             1,
+             0.5,
+             {ResourceProcessor{ResourceStorage{Resource{ResourceID::Coal, 0}, 10}, 1}},
+             {TruckType::SmallCoal}},
+         BuildingDefinition{
+             "Iron Ore Mine",
+             1,
+             0.5,
+             {ResourceProcessor{ResourceStorage{Resource{ResourceID::IronOre, 0}, 10}, 1}},
+             {TruckType::SmallIronOre}},
+         BuildingDefinition{
+             "Steel Mine",
+             1,
+             0.5,
+             {
+                 ResourceProcessor{ResourceStorage{Resource{ResourceID::Steel, 0}, 10}, 1},
+                 ResourceProcessor{ResourceStorage{Resource{ResourceID::Coal, 0}, 10}, -1},
+                 ResourceProcessor{ResourceStorage{Resource{ResourceID::IronOre, 0}, 10}, -1},
+             },
+             {TruckType::SmallSteel}}}};
+
+constexpr const BuildingDefinition& get_building_definition(BuildingType id)
 {
-const BuildingDefinition coal_mine = {
-    "Coal Mine",
-    1,
-    0.5,
-    {ResourceProcessor{ResourceStorage{Resource{resource::coal, 0}, 10}, 1}},
-    {&truck::coal_truck}};
-const BuildingDefinition iron_ore_mine = {
-    "Iron Ore Mine",
-    1,
-    0.5,
-    {ResourceProcessor{ResourceStorage{Resource{resource::iron_ore, 0}, 10}, 1}},
-    {&truck::iron_ore_truck}};
-const BuildingDefinition steel_mine = {
-    "Steel Mine",
-    1,
-    0.5,
-    {
-        ResourceProcessor{ResourceStorage{Resource{resource::steel, 0}, 10}, 1},
-        ResourceProcessor{ResourceStorage{Resource{resource::coal, 0}, 10}, -1},
-        ResourceProcessor{ResourceStorage{Resource{resource::iron_ore, 0}, 10}, -1},
-    },
-    {&truck::steel_truck}};
-} // namespace building
+    return building_definitions[static_cast<std::size_t>(id)];
+}
 } // namespace industry_game
