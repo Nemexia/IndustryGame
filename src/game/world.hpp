@@ -1,4 +1,5 @@
 #pragma once
+#include "../buildings/building.hpp"
 
 #include <vector>
 namespace industry_game

@@ -1,5 +1,6 @@
 #pragma once
 #include "../core/position.hpp"
+#include "../trucks/truck.hpp"
 #include "building_definition.hpp"
 
 #include <vector>
