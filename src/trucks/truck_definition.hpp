@@ -3,20 +3,30 @@
 
 namespace industry_game
 {
+enum class TruckType : std::uint8_t
+{
+    SmallCoal,
+    SmallIronOre,
+    SmallSteel,
+    count,
+};
+
 struct TruckDefinition
 {
     const char* name;
     double size;
     double speed;
-    ResourceStorage storage;
+    double capacity;
+    ResourceID resource;
 };
-namespace truck
+
+constexpr std::array<TruckDefinition, static_cast<std::size_t>(TruckType::count)>
+    truck_definitions = {{TruckDefinition{"Small Coal Truck", 1, 1, 10, ResourceID::Coal},
+                          TruckDefinition{"Small Iron Ore Truck", 1, 1, 10, ResourceID::IronOre},
+                          TruckDefinition{"Small Steel Truck", 1, 1, 10, ResourceID::Steel}}};
+
+constexpr const TruckDefinition& get_truck_definition(TruckType id)
 {
-constexpr TruckDefinition coal_truck = {"Coal Truck", 1, 1,
-                                        ResourceStorage{Resource{resource::coal, 0}, 10}};
-constexpr TruckDefinition iron_ore_truck = {"Iron Ore Truck", 1, 1,
-                                            ResourceStorage{Resource{resource::iron_ore, 0}, 10}};
-constexpr TruckDefinition steel_truck = {"Steel Truck", 1, 1,
-                                         ResourceStorage{Resource{resource::steel, 0}, 10}};
-} // namespace truck
+    return truck_definitions[static_cast<std::size_t>(id)];
+}
 } // namespace industry_game

@@ -4,16 +4,22 @@
 
 namespace industry_game
 {
-class Building;
 class Truck
 {
   public:
-    Truck(const TruckDefinition& truck_definition, Building& home_building);
+    Truck(TruckType type, Position position)
+        : cargo_(Resource{get_truck_definition(type).resource, 0.0},
+                 get_truck_definition(type).capacity)
+        , position_(position)
+        , home_base_(position)
+        , target(position)
+        , type_(type) {};
 
   private:
-    const TruckDefinition& truck_definition_;
+    ResourceStorage cargo_;
     Position position_;
-    Building* target_building_;
-    Building& home_building_;
+    Position home_base_;
+    Position target;
+    TruckType type_;
 };
 } // namespace industry_game

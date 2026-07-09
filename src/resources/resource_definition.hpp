@@ -8,9 +8,9 @@ namespace industry_game
 {
 enum class ResourceID : std::uint8_t
 {
-    coal,
-    iron_ore,
-    steel,
+    Coal,
+    IronOre,
+    Steel,
     count,
 };
 struct ResourceDefinition
