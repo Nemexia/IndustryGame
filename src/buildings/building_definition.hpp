@@ -25,7 +25,7 @@ struct BuildingDefinition
     std::vector<TruckType> trucks_;
 };
 
-const std::array<BuildingDefinition, static_cast<std::size_t>(BuildingType::count)>
+inline const std::array<BuildingDefinition, static_cast<std::size_t>(BuildingType::count)>
     building_definitions = {
         {BuildingDefinition{
              "Coal Mine",
