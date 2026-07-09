@@ -13,7 +13,7 @@ enum class BuildingType : std::uint8_t
 {
     CoalMine,
     IronOreMine,
-    SteelMine,
+    SteelMill,
     count,
 };
 struct BuildingDefinition
@@ -40,7 +40,7 @@ const std::array<BuildingDefinition, static_cast<std::size_t>(BuildingType::coun
              {ResourceProcessor{ResourceStorage{Resource{ResourceID::IronOre, 0}, 10}, 1}},
              {TruckType::SmallIronOre}},
          BuildingDefinition{
-             "Steel Mine",
+             "Steel Mill",
              10,
              0.5,
              {

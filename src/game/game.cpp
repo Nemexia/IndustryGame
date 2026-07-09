@@ -20,7 +20,7 @@ void Game::run()
 void Game::draw()
 {
     graphic_renderer_->begin_drawing();
-    graphic_renderer_->clear_background({255    , 255    , 255    });
+    graphic_renderer_->clear_background({255, 255, 255});
     world_renderer_.draw(world_, *graphic_renderer_);
     graphic_renderer_->end_drawing();
 }
@@ -43,7 +43,7 @@ void Game::handle_input_events()
     }
     else if (graphic_renderer_->is_key_released(Key::Three))
     {
-        world_.add_building(BuildingType::SteelMine, position);
+        world_.add_building(BuildingType::SteelMill, position);
     }
 }
 void Game::update()
