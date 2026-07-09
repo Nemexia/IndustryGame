@@ -22,6 +22,7 @@ target_sources(
     src/resources/resource_storage.hpp
     src/buildings/building_definition.hpp
     src/trucks/truck_definition.hpp
+    src/resources/resource_processor.hpp
 )
 
 target_include_directories(IndustryGame PRIVATE src)
