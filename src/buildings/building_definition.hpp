@@ -33,7 +33,11 @@ const BuildingDefinition steel_mine = {
     "Steel Mine",
     1,
     0.5,
-    {ResourceProcessor{ResourceStorage{Resource{resource::steel, 0}, 10}, 1}},
+    {
+        ResourceProcessor{ResourceStorage{Resource{resource::steel, 0}, 10}, 1},
+        ResourceProcessor{ResourceStorage{Resource{resource::coal, 0}, 10}, -1},
+        ResourceProcessor{ResourceStorage{Resource{resource::iron_ore, 0}, 10}, -1},
+    },
     {&truck::steel_truck}};
 } // namespace building
 } // namespace industry_game
