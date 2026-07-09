@@ -14,7 +14,8 @@ void World::add_building(BuildingType type, Position position)
     std::vector<TruckID> trucks_made;
     for (auto& processor : get_building_definition(type).resource_processors)
     {
-        if(processor.r)
+        if (processor.rate < 0)
+            continue;
         TruckID truck_id = static_cast<TruckID>(trucks_.size());
         trucks_made.emplace_back(truck_id);
 
