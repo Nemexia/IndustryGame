@@ -23,6 +23,7 @@ target_sources(
     src/buildings/building_definition.hpp
     src/trucks/truck_definition.hpp
     src/resources/resource_processor.hpp
+    src/rendering/raylib_renderer.hpp
 )
 
 target_include_directories(IndustryGame PRIVATE src)
