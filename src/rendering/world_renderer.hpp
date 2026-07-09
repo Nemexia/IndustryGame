@@ -1,5 +1,7 @@
 #pragma once
+#include "../game/world.hpp"
 #include "irenderer.hpp"
+
 
 namespace industry_game
 {
