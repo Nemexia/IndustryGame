@@ -24,6 +24,7 @@ target_sources(
     src/trucks/truck_definition.hpp
     src/resources/resource_processor.hpp
     src/rendering/raylib_renderer.hpp
+    src/rendering/world_renderer.hpp
 )
 
 target_include_directories(IndustryGame PRIVATE src)
