@@ -3,6 +3,13 @@
 #include "../core/position.hpp"
 namespace industry_game
 {
+
+enum class Key
+{
+    One,
+    Two,
+    Three,
+};
 class IRenderer
 {
   public:
@@ -17,5 +24,6 @@ class IRenderer
     virtual void begin_drawing() = 0;
     virtual void end_drawing() = 0;
     virtual void clear_background(Color color) = 0;
+    virtual bool is_key_released(Key key) = 0;
 };
 } // namespace industry_game

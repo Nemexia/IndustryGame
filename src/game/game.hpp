@@ -10,7 +10,7 @@ class Game
     Game(const char* name, IRenderer* graphic_render, int width, int height, int fps)
         : world_()
         , world_renderer_()
-        , graphic_rendere_(graphic_render) {};
+        , graphic_renderer_(graphic_render) {};
     void run();
 
   private:
@@ -19,6 +19,6 @@ class Game
     void draw();
     World world_;
     WorldRenderer world_renderer_;
-    IRenderer* graphic_rendere_;
+    IRenderer* graphic_renderer_;
 };
 } // namespace industry_game

@@ -18,6 +18,7 @@ class RaylibRenderer : public IRenderer
     void begin_drawing() override;
     void end_drawing() override;
     void clear_background(Color color) override;
+    bool is_key_released(Key key) override;
 
   private:
     const char* name_;

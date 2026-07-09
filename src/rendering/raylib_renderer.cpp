@@ -1,5 +1,8 @@
 #include "raylib_renderer.hpp"
 
+#include "raylib.h"
+
+
 namespace industry_game
 {
 void RaylibRenderer::initialize(const char* name, int width, int height, int target_fps)
@@ -30,5 +33,18 @@ void RaylibRenderer::end_drawing()
 void RaylibRenderer::clear_background(Color color)
 {
     ClearBackground({color.r, color.g, color.b, 255});
+}
+bool RaylibRenderer::is_key_released(Key key)
+{
+    switch (key)
+    {
+    case Key::One:
+        return IsKeyReleased(KEY_ONE);
+    case Key::Two:
+        return IsKeyReleased(KEY_TWO);
+    case Key::Three:
+        return IsKeyReleased(KEY_THREE);
+    }
+    return false;
 }
 } // namespace industry_game
