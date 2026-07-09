@@ -29,21 +29,25 @@ void Game::handle_input_events()
     static std::mt19937 generator(std::random_device{}());
     static std::uniform_int_distribution<int> width_dist(0, width_);
     static std::uniform_int_distribution<int> height_dist(0, height_);
-    auto x = static_cast<double>(width_dist(generator));
-    auto y = static_cast<double>(height_dist(generator));
-    Position position{x, y};
+
+    auto random_position = [&]() -> Position
+    {
+        auto x = static_cast<double>(width_dist(generator));
+        auto y = static_cast<double>(height_dist(generator));
+        return Position{x, y};
+    };
 
     if (graphic_renderer_->is_key_released(Key::One))
     {
-        world_.add_building(BuildingType::CoalMine, position);
+        world_.add_building(BuildingType::CoalMine, random_position());
     }
     else if (graphic_renderer_->is_key_released(Key::Two))
     {
-        world_.add_building(BuildingType::IronOreMine, position);
+        world_.add_building(BuildingType::IronOreMine, random_position());
     }
     else if (graphic_renderer_->is_key_released(Key::Three))
     {
-        world_.add_building(BuildingType::SteelMill, position);
+        world_.add_building(BuildingType::SteelMill, random_position());
     }
 }
 void Game::update()
