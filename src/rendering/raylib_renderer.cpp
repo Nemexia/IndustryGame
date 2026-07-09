@@ -2,17 +2,12 @@
 
 #include "raylib.h"
 
-
 namespace industry_game
 {
 void RaylibRenderer::initialize(const char* name, int width, int height, int target_fps)
 {
-    name_ = name;
-    width_ = width;
-    height_ = height;
-    target_fps_ = target_fps;
-    InitWindow(width_, height_, name_);
-    SetTargetFPS(target_fps_);
+    InitWindow(width, height, name);
+    SetTargetFPS(target_fps);
 }
 bool RaylibRenderer::window_should_close() const
 {

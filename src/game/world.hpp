@@ -1,6 +1,7 @@
 #pragma once
 #include "../buildings/building.hpp"
 #include "../trucks/truck.hpp"
+#include "buildings/building_definition.hpp"
 
 #include <vector>
 namespace industry_game
@@ -8,8 +9,7 @@ namespace industry_game
 class World
 {
   public:
-    void add_truck(Truck truck);
-    void add_building(Building building);
+    void add_building(BuildingType type, Position position);
 
   private:
     std::vector<Building> buildings_;

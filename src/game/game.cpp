@@ -1,7 +1,10 @@
 #include "game.hpp"
 
+#include "buildings/building_definition.hpp"
+#include "core/position.hpp"
 #include "raylib.h"
 
+#include <random>
 namespace industry_game
 {
 void Game::run()
@@ -23,15 +26,24 @@ void Game::draw()
 }
 void Game::handle_input_events()
 {
+    static std::mt19937 generator(std::random_device{}());
+    static std::uniform_int_distribution<int> width_dist(0, width_);
+    static std::uniform_int_distribution<int> height_dist(0, height_);
+    auto x = static_cast<double>(width_dist(generator));
+    auto y = static_cast<double>(height_dist(generator));
+    Position position{x, y};
+
     if (graphic_renderer_->is_key_released(Key::One))
     {
-        // TODO: Implement this
+        world_.add_building(BuildingType::CoalMine, position);
     }
     else if (graphic_renderer_->is_key_released(Key::Two))
     {
+        world_.add_building(BuildingType::IronOreMine, position);
     }
     else if (graphic_renderer_->is_key_released(Key::Three))
     {
+        world_.add_building(BuildingType::SteelMine, position);
     }
 }
 } // namespace industry_game

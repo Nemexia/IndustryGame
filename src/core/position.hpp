@@ -4,7 +4,7 @@ namespace industry_game
 {
 struct Position
 {
-    int x;
-    int y;
+    double x;
+    double y;
 };
 } // namespace industry_game

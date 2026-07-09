@@ -19,11 +19,5 @@ class RaylibRenderer : public IRenderer
     void end_drawing() override;
     void clear_background(Color color) override;
     bool is_key_released(Key key) override;
-
-  private:
-    const char* name_;
-    int width_;
-    int height_;
-    int target_fps_;
 };
 } // namespace industry_game
