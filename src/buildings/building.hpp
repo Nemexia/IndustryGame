@@ -1,12 +1,12 @@
 #pragma once
 #include "../core/position.hpp"
-#include "../trucks/truck.hpp"
 #include "building_definition.hpp"
 
 #include <vector>
 
 namespace industry_game
 {
+class Truck;
 class Building
 {
   public:

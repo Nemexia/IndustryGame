@@ -1,9 +1,10 @@
 #pragma once
-#include "../buildings/building.hpp"
+#include "../core/position.hpp"
 #include "truck_definition.hpp"
 
 namespace industry_game
 {
+class Building;
 class Truck
 {
   public:
