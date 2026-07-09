@@ -25,6 +25,7 @@ target_sources(
     src/resources/resource_processor.hpp
     src/rendering/raylib_renderer.hpp
     src/rendering/world_renderer.hpp
+    src/game/world.hpp
 )
 
 target_include_directories(IndustryGame PRIVATE src)
