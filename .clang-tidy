@@ -1,0 +1,24 @@
+Checks: >
+  bugprone-*,
+  performance-*,
+  modernize-*,
+  readability-*,
+  misc-*,
+  clang-analyzer-*,
+
+  -modernize-use-trailing-return-type,
+  -readability-magic-numbers,
+  -modernize-use-nodiscard
+
+WarningsAsErrors: ""
+
+HeaderFilterRegex: ".*"
+AnalyzeTemporaryDtors: false
+FormatStyle: file
+
+CheckOptions:
+  - key: modernize-loop-convert.MinConfidence
+    value: reasonable
+
+  - key: readability-identifier-naming.VariableCase
+    value: lower_case

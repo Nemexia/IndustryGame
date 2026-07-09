@@ -1,0 +1,35 @@
+Language: Cpp
+BasedOnStyle: LLVM
+
+# Indentation / layout
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 100
+
+# Braces (Allman)
+BreakBeforeBraces: Allman
+
+# Control of compact code
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+
+# Spacing rules
+SpaceBeforeParens: ControlStatements
+SpaceAfterCStyleCast: true
+
+# Pointer/reference alignment (important consistency rule)
+PointerAlignment: Left
+ReferenceAlignment: Left
+
+# Include sorting
+SortIncludes: true
+IncludeBlocks: Regroup
+
+# Clean namespace formatting
+NamespaceIndentation: None
+
+# Keep things readable
+BreakConstructorInitializers: BeforeComma
+ConstructorInitializerIndentWidth: 4
