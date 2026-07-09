@@ -2,7 +2,6 @@
 #include "../buildings/building.hpp"
 #include "truck_definition.hpp"
 
-
 namespace industry_game
 {
 class Truck
@@ -15,5 +14,5 @@ class Truck
     Position position_;
     Building* target_building_;
     Building& home_building_;
-}
+};
 } // namespace industry_game

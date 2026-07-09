@@ -16,5 +16,5 @@ class Building
     Position position_;
     std::vector<ResourceProcessor> resource_processors_;
     std::vector<Truck> trucks_;
-}
+};
 } // namespace industry_game

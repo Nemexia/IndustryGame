@@ -7,7 +7,7 @@ class World
 {
   public:
   private:
-  std::vector<Building>
-}
+    std::vector<Building>
+};
 // TODO: Implement
 } // namespace industry_game
