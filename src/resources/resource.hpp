@@ -5,7 +5,7 @@ namespace industry_game
 {
 struct Resource
 {
-    const ResourceDefinition& definition;
+    ResourceID id;
     double amount;
 };
 } // namespace industry_game
