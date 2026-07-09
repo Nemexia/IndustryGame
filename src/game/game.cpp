@@ -20,7 +20,7 @@ void Game::run()
 void Game::draw()
 {
     graphic_renderer_->begin_drawing();
-    graphic_renderer_->clear_background({0, 0, 0});
+    graphic_renderer_->clear_background({255    , 255    , 255    });
     world_renderer_.draw(world_, *graphic_renderer_);
     graphic_renderer_->end_drawing();
 }
@@ -45,5 +45,9 @@ void Game::handle_input_events()
     {
         world_.add_building(BuildingType::SteelMine, position);
     }
+}
+void Game::update()
+{
+    world_.update();
 }
 } // namespace industry_game

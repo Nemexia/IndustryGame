@@ -16,6 +16,23 @@ class Truck
         , target(home_base)
         , type_(type) {};
 
+    const Position get_position() const
+    {
+        return position_;
+    }
+    const double get_size() const
+    {
+        return get_truck_definition(type_).size;
+    }
+    const Color get_color() const
+    {
+        return get_resource_definition(get_truck_definition(type_).resource).color;
+    }
+    const double get_alpha() const
+    {
+        return 255;
+    }
+
   private:
     ResourceStorage cargo_;
     Position position_;

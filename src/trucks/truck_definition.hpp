@@ -21,9 +21,9 @@ struct TruckDefinition
 };
 
 constexpr std::array<TruckDefinition, static_cast<std::size_t>(TruckType::count)>
-    truck_definitions = {{TruckDefinition{"Small Coal Truck", 1, 1, 10, ResourceID::Coal},
-                          TruckDefinition{"Small Iron Ore Truck", 1, 1, 10, ResourceID::IronOre},
-                          TruckDefinition{"Small Steel Truck", 1, 1, 10, ResourceID::Steel}}};
+    truck_definitions = {{TruckDefinition{"Small Coal Truck", 5, 1, 10, ResourceID::Coal},
+                          TruckDefinition{"Small Iron Ore Truck", 5, 1, 10, ResourceID::IronOre},
+                          TruckDefinition{"Small Steel Truck", 5, 1, 10, ResourceID::Steel}}};
 
 constexpr const TruckDefinition& get_truck_definition(TruckType id)
 {

@@ -10,7 +10,7 @@ class WorldRenderer
     void draw(const World& world, IRenderer& renderer) const;
 
   private:
-    void draw(const Truck&);
-    void draw(const Building&);
+    void draw(const Truck&, IRenderer& renderer) const;
+    void draw(const Building&, IRenderer& renderer) const;
 };
 } // namespace industry_game

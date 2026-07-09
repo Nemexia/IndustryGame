@@ -17,6 +17,7 @@ target_sources(
     src/game/game.cpp
     src/game/game.hpp
     src/game/world.hpp
+    src/game/world.cpp
     src/core/color.hpp
     src/core/id.hpp
     src/core/position.hpp
@@ -32,7 +33,8 @@ target_sources(
     src/trucks/truck.hpp
     src/buildings/building_definition.hpp
     src/buildings/building.hpp
-    )
+    src/rendering/world_renderer.cpp
+)
 
 target_include_directories(IndustryGame PRIVATE src)
 

@@ -22,26 +22,26 @@ struct BuildingDefinition
     double size;
     double efficiency;
     std::vector<ResourceProcessor> resource_processors;
-    std::vector<TruckType> truck_types;
+    std::vector<TruckType> trucks_;
 };
 
 const std::array<BuildingDefinition, static_cast<std::size_t>(BuildingType::count)>
     building_definitions = {
         {BuildingDefinition{
              "Coal Mine",
-             1,
+             10,
              0.5,
              {ResourceProcessor{ResourceStorage{Resource{ResourceID::Coal, 0}, 10}, 1}},
              {TruckType::SmallCoal}},
          BuildingDefinition{
              "Iron Ore Mine",
-             1,
+             10,
              0.5,
              {ResourceProcessor{ResourceStorage{Resource{ResourceID::IronOre, 0}, 10}, 1}},
              {TruckType::SmallIronOre}},
          BuildingDefinition{
              "Steel Mine",
-             1,
+             10,
              0.5,
              {
                  ResourceProcessor{ResourceStorage{Resource{ResourceID::Steel, 0}, 10}, 1},
