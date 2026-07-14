@@ -7,9 +7,9 @@ struct ResourceProcessor
 {
     ResourceStorage storage;
     double rate;
-    void update()
+    void update(double efficiency)
     {
-        storage.resource.amount += rate;
+        storage.resource.amount += rate * efficiency;
         if (storage.resource.amount > storage.capacity)
         {
             storage.resource.amount = storage.capacity;

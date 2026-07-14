@@ -45,7 +45,25 @@ class Building
     {
         for (auto& processor : resource_processors_)
         {
-            processor.update();
+            auto const delta = processor.rate * get_building_definition(type_).efficiency;
+            if (delta > 0)
+            {
+                if (processor.storage.resource.amount + delta > processor.storage.capacity)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                if (processor.storage.resource.amount + delta < 0)
+                {
+                    return;
+                }
+            }
+        }
+        for (auto& processor : resource_processors_)
+        {
+            processor.update(get_building_definition(type_).efficiency);
         }
     }
 
