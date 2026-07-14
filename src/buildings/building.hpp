@@ -41,6 +41,13 @@ class Building
         auto const& current = resource_processors_[0].storage.resource.amount;
         return current / capacity * 255;
     }
+    void update()
+    {
+        for (auto& processor : resource_processors_)
+        {
+            processor.update();
+        }
+    }
 
   private:
     Position position_;
