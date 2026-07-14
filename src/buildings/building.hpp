@@ -36,8 +36,10 @@ class Building
             .color;
     }
     const double get_alpha() const
-    { // TODO: Implement this
-        return 255;
+    {
+        auto const& capacity = resource_processors_[0].storage.capacity;
+        auto const& current = resource_processors_[0].storage.resource.amount;
+        return current / capacity * 255;
     }
 
   private:

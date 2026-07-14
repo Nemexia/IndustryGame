@@ -30,7 +30,9 @@ class Truck
     }
     const double get_alpha() const
     {
-        return 255;
+        auto const& capacity = cargo_.capacity;
+        auto const& current = cargo_.resource.amount;
+        return current / capacity * 255;
     }
 
   private:
