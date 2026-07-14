@@ -41,6 +41,31 @@ class Building
         auto const& current = resource_processors_[0].storage.resource.amount;
         return current / capacity * 255;
     }
+    void update()
+    {
+        for (auto& processor : resource_processors_)
+        {
+            auto const delta = processor.rate * get_building_definition(type_).efficiency;
+            if (delta > 0)
+            {
+                if (processor.storage.resource.amount + delta > processor.storage.capacity)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                if (processor.storage.resource.amount + delta < 0)
+                {
+                    return;
+                }
+            }
+        }
+        for (auto& processor : resource_processors_)
+        {
+            processor.update(get_building_definition(type_).efficiency);
+        }
+    }
 
   private:
     Position position_;
