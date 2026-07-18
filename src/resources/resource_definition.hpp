@@ -6,13 +6,6 @@
 
 namespace industry_game
 {
-enum class ResourceID : std::uint8_t
-{
-    Coal,
-    IronOre,
-    Steel,
-    count,
-};
 struct ResourceDefinition
 {
     const char* name;
