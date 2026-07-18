@@ -40,12 +40,6 @@ target_sources(
 target_include_directories(IndustryGame PRIVATE src)
 
 
-include(FetchContent)
-FetchContent_Declare(
-    raylib
-    GIT_REPOSITORY
-    https://github.com/raysan5/raylib.git
-    GIT_TAG master)
-FetchContent_MakeAvailable(raylib)
+find_package(raylib CONFIG REQUIRED)
 
 target_link_libraries(IndustryGame PRIVATE raylib)
