@@ -13,7 +13,7 @@ class Game
   public:
     Game(IRenderer* graphic_render, int width, int height, int fps)
         : world_()
-        , name_(std::string_view{std::string(game_name) + " " + std::string(version)})
+        , name_(std::string(game_name) + " " + std::string(version))
         , graphic_renderer_(graphic_render)
         , width_(width)
         , height_(height)
