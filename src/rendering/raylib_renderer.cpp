@@ -14,9 +14,9 @@ void RaylibRenderer::draw_rectangle(Position position, int width, int height, Co
 {
     DrawRectangle(position.x, position.y, width, height, {color.r, color.g, color.b, alpha});
 }
-void RaylibRenderer::initialize(const char* name, int width, int height, int target_fps)
+void RaylibRenderer::initialize(std::string_view name, int width, int height, int target_fps)
 {
-    InitWindow(width, height, name);
+    InitWindow(width, height, name.data());
     SetTargetFPS(target_fps);
 }
 bool RaylibRenderer::window_should_close() const

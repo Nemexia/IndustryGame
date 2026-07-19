@@ -4,11 +4,9 @@
 
 #include <string>
 
-
 int main()
 {
-    std::string game_name = std::string{"IndustryGame"} + " " + std::string{industry_game::version};
     industry_game::RaylibRenderer raylib_graphic_renderer;
-    industry_game::Game game{game_name.c_str(), &raylib_graphic_renderer, 800, 450, 60};
+    industry_game::Game game{&raylib_graphic_renderer, 800, 450, 60};
     game.run();
 }
