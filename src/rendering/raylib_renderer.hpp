@@ -2,13 +2,14 @@
 #include "irenderer.hpp"
 
 #include <raylib.h>
+#include <string_view>
 
 namespace industry_game
 {
 class RaylibRenderer : public IRenderer
 {
   public:
-    void initialize(const char* name, int width, int height, int target_fps) override;
+    void initialize(std::string_view name, int width, int height, int target_fps) override;
     void draw_circle(Position position, int radius, Color color,
                      unsigned char alpha) const override;
     void draw_rectangle(Position position, int width, int height, Color color,
