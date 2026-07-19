@@ -39,23 +39,13 @@ public:
     {
         return resource_processors_[0].fill_ratio() * 255;
     }
-    void update()
+    std::vector<ResourceProcessor>& get_resource_processors()
     {
-        double factor = get_building_definition(type_).conversion_speed;
-        const double efficiency = get_building_definition(type_).efficiency;
-        for (auto& processor : resource_processors_)
-        {
-            auto rate_factor = processor.rate_factor();
-            if (processor.rate() > 0)
-            {
-                rate_factor *= efficiency;
-            }
-            factor = std::min(factor, rate_factor);
-        }
-        for (auto& processor : resource_processors_)
-        {
-            processor.process(factor);
-        }
+        return resource_processors_;
+    }
+    BuildingType get_type() const
+    {
+        return type_;
     }
 
 private:

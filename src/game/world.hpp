@@ -20,6 +20,14 @@ public:
     {
         return trucks_;
     }
+    std::vector<Building>& get_buildings()
+    {
+        return buildings_;
+    }
+    std::vector<Truck>& get_trucks()
+    {
+        return trucks_;
+    }
 
 private:
     std::vector<Building> buildings_;

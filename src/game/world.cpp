@@ -39,9 +39,6 @@ void World::add_building(BuildingType type, Position position)
 }
 void World::update()
 {
-    for (auto& building : buildings_)
-    {
-        building.update();
-    }
+    // TODO: What to do with it?
 }
 } // namespace industry_game

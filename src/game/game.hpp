@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 
+#include "../managers/production_manager.hpp"
 #include "../rendering/irenderer.hpp"
 #include "../rendering/world_renderer.hpp"
 #include "../version.hpp"
@@ -36,5 +37,6 @@ private:
     int height_;
     int fps_;
     WorldRenderer world_renderer_;
+    ProductionManager production_manager_;
 };
 } // namespace industry_game
