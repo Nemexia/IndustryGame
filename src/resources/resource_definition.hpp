@@ -3,6 +3,7 @@
 
 #include <array>
 #include <cstdint>
+#include <string_view>
 
 namespace industry_game
 {
@@ -15,7 +16,7 @@ enum class ResourceID : std::uint8_t
 };
 struct ResourceDefinition
 {
-    const char* name;
+    std::string_view name;
     Color color;
 };
 
