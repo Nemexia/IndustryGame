@@ -1,11 +1,12 @@
 #pragma once
-#include "resource.hpp"
+#include "resource_definition.hpp"
 
 namespace industry_game
 {
 struct ResourceStorage
 {
-    Resource resource;
+    double amount;
     double capacity;
+    ResourceType resource;
 };
 } // namespace industry_game
