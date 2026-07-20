@@ -26,7 +26,6 @@ target_sources(
     src/rendering/raylib_renderer.hpp
     src/rendering/world_renderer.hpp
     src/resources/resource_definition.hpp
-    src/resources/resource.hpp
     src/resources/resource_storage.hpp
     src/resources/resource_processor.hpp
     src/trucks/truck_definition.hpp

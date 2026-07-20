@@ -32,17 +32,16 @@ class Building
     const Color get_color() const
     {
         return get_resource_definition(
-                   get_building_definition(type_).resource_processors[0].storage.resource.id)
+                   get_building_definition(type_).resource_processors[0].storage.resource())
             .color;
     }
     const double get_alpha() const
     {
-        auto const& capacity = resource_processors_[0].storage.capacity;
-        auto const& current = resource_processors_[0].storage.resource.amount;
-        return current / capacity * 255;
+        return resource_processors_[0].storage.fill_ratio() * 255;
     }
     void update()
     {
+        // TODO: FIX THIS
         for (auto& processor : resource_processors_)
         {
             auto const delta = processor.rate * get_building_definition(type_).efficiency;

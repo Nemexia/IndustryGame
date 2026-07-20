@@ -5,19 +5,23 @@ namespace industry_game
 {
 struct ResourceProcessor
 {
+    // TODO: MAKE CLASS
     ResourceStorage storage;
     double rate;
-    void update(double efficiency)
+    double Process(double efficiency)
     {
-        storage.resource.amount += rate * efficiency;
-        if (storage.resource.amount > storage.capacity)
+        auto const change = rate * efficiency;
+        double changed;
+
+        if (change > 0)
         {
-            storage.resource.amount = storage.capacity;
+            changed = storage.add(change);
         }
-        else if (storage.resource.amount < 0)
+        else
         {
-            storage.resource.amount = 0;
+            changed = storage.take(-change);
         }
+        return changed;
     }
 };
 } // namespace industry_game

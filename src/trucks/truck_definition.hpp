@@ -1,5 +1,7 @@
 #pragma once
-#include "../resources/resource_storage.hpp"
+#include "resources/resource_definition.hpp"
+
+#include <string_view>
 
 namespace industry_game
 {
@@ -13,17 +15,16 @@ enum class TruckType : std::uint8_t
 
 struct TruckDefinition
 {
-    const char* name;
-    double size;
+    std::string_view name;
     double speed;
     double capacity;
-    ResourceID resource;
+    ResourceType resource;
 };
 
 inline constexpr std::array<TruckDefinition, static_cast<std::size_t>(TruckType::count)>
-    truck_definitions = {{TruckDefinition{"Small Coal Truck", 5, 1, 10, ResourceID::Coal},
-                          TruckDefinition{"Small Iron Ore Truck", 5, 1, 10, ResourceID::IronOre},
-                          TruckDefinition{"Small Steel Truck", 5, 1, 10, ResourceID::Steel}}};
+    truck_definitions = {{TruckDefinition{"Small Coal Truck", 1, 10, ResourceType::Coal},
+                          TruckDefinition{"Small Iron Ore Truck", 1, 10, ResourceType::IronOre},
+                          TruckDefinition{"Small Steel Truck", 1, 10, ResourceType::Steel}}};
 
 constexpr const TruckDefinition& get_truck_definition(TruckType id)
 {

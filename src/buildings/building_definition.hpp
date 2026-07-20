@@ -1,10 +1,10 @@
 #pragma once
 #include "../resources/resource_processor.hpp"
 #include "../trucks/truck_definition.hpp"
-#include "resources/resource.hpp"
 #include "resources/resource_definition.hpp"
 #include "resources/resource_storage.hpp"
 
+#include <string_view>
 #include <vector>
 
 namespace industry_game
@@ -18,7 +18,7 @@ enum class BuildingType : std::uint8_t
 };
 struct BuildingDefinition
 {
-    const char* name;
+    std::string_view name;
     double size;
     double efficiency;
     std::vector<ResourceProcessor> resource_processors;
@@ -27,26 +27,24 @@ struct BuildingDefinition
 
 inline const std::array<BuildingDefinition, static_cast<std::size_t>(BuildingType::count)>
     building_definitions = {
-        {BuildingDefinition{
-             "Coal Mine",
-             10,
-             0.5,
-             {ResourceProcessor{ResourceStorage{Resource{ResourceID::Coal, 0}, 10}, 1}},
-             {TruckType::SmallCoal}},
-         BuildingDefinition{
-             "Iron Ore Mine",
-             10,
-             0.5,
-             {ResourceProcessor{ResourceStorage{Resource{ResourceID::IronOre, 0}, 10}, 1}},
-             {TruckType::SmallIronOre}},
+        {BuildingDefinition{"Coal Mine",
+                            10,
+                            0.5,
+                            {ResourceProcessor{ResourceStorage{ResourceType::Coal, 10, 0}, 1}},
+                            {TruckType::SmallCoal}},
+         BuildingDefinition{"Iron Ore Mine",
+                            10,
+                            0.5,
+                            {ResourceProcessor{ResourceStorage{ResourceType::IronOre, 10, 0}, 1}},
+                            {TruckType::SmallIronOre}},
          BuildingDefinition{
              "Steel Mill",
              10,
              0.5,
              {
-                 ResourceProcessor{ResourceStorage{Resource{ResourceID::Steel, 0}, 10}, 1},
-                 ResourceProcessor{ResourceStorage{Resource{ResourceID::Coal, 0}, 10}, -1},
-                 ResourceProcessor{ResourceStorage{Resource{ResourceID::IronOre, 0}, 10}, -1},
+                 ResourceProcessor{ResourceStorage{ResourceType::Steel, 10, 0}, 1},
+                 ResourceProcessor{ResourceStorage{ResourceType::Coal, 10, 0}, -1},
+                 ResourceProcessor{ResourceStorage{ResourceType::IronOre, 10, 0}, -1},
              },
              {TruckType::SmallSteel}}}};
 

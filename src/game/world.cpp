@@ -3,6 +3,7 @@
 #include "buildings/building.hpp"
 #include "buildings/building_definition.hpp"
 #include "core/id.hpp"
+#include "resources/resource_definition.hpp"
 
 #include <vector>
 
@@ -20,15 +21,15 @@ void World::add_building(BuildingType type, Position position)
         trucks_made.emplace_back(truck_id);
 
         TruckType truck_type;
-        if (processor.storage.resource.id == ResourceID::Coal)
+        if (processor.storage.resource() == ResourceType::Coal)
         {
             truck_type = TruckType::SmallCoal;
         }
-        else if (processor.storage.resource.id == ResourceID::IronOre)
+        else if (processor.storage.resource() == ResourceType::IronOre)
         {
             truck_type = TruckType::SmallIronOre;
         }
-        else if (processor.storage.resource.id == ResourceID::Steel)
+        else if (processor.storage.resource() == ResourceType::Steel)
         {
             truck_type = TruckType::SmallSteel;
         }
