@@ -6,7 +6,6 @@
 #include "resources/resource_definition.hpp"
 #include "resources/resource_processor.hpp"
 
-#include <array>
 #include <vector>
 
 namespace industry_game
@@ -42,23 +41,10 @@ class Building
     void update()
     {
         // TODO: FIX THIS
+        double overall_factor = get_building_definition(type_).efficiency;
         for (auto& processor : resource_processors_)
         {
-            auto const delta = processor.rate * get_building_definition(type_).efficiency;
-            if (delta > 0)
-            {
-                if (processor.storage.resource.amount + delta > processor.storage.capacity)
-                {
-                    return;
-                }
-            }
-            else
-            {
-                if (processor.storage.resource.amount + delta < 0)
-                {
-                    return;
-                }
-            }
+            overall_factor = std::min(overall_factor, processor.rate_factor());
         }
         for (auto& processor : resource_processors_)
         {

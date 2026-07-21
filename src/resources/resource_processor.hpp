@@ -23,5 +23,16 @@ struct ResourceProcessor
         }
         return changed;
     }
+    double rate_factor() const
+    {
+        if (rate < 0)
+        {
+            return storage.stored() / -rate;
+        }
+        else
+        {
+            return storage.free_space() / rate;
+        }
+    }
 };
 } // namespace industry_game
