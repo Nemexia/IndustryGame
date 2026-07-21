@@ -41,14 +41,20 @@ class Building
     void update()
     {
         // TODO: FIX THIS
-        double overall_factor = get_building_definition(type_).efficiency;
+        double factor = get_building_definition(type_).conversion_speed;
+        const double efficiency = get_building_definition(type_).efficiency;
         for (auto& processor : resource_processors_)
         {
-            overall_factor = std::min(overall_factor, processor.rate_factor());
+            auto rate_factor = processor.rate_factor();
+            if (processor.rate > 0)
+            {
+                rate_factor *= efficiency;
+            }
+            factor = std::min(factor, rate_factor);
         }
         for (auto& processor : resource_processors_)
         {
-            processor.update(get_building_definition(type_).efficiency);
+            processor.process(factor);
         }
     }
 

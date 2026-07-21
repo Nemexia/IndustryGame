@@ -20,6 +20,7 @@ struct BuildingDefinition
 {
     std::string_view name;
     double size;
+    double conversion_speed;
     double efficiency;
     std::vector<ResourceProcessor> resource_processors;
     std::vector<TruckType> trucks_;
@@ -29,17 +30,20 @@ inline const std::array<BuildingDefinition, static_cast<std::size_t>(BuildingTyp
     building_definitions = {
         {BuildingDefinition{"Coal Mine",
                             10,
+                            1,
                             0.5,
                             {ResourceProcessor{ResourceStorage{ResourceType::Coal, 10, 0}, 1}},
                             {TruckType::SmallCoal}},
          BuildingDefinition{"Iron Ore Mine",
                             10,
+                            1,
                             0.5,
                             {ResourceProcessor{ResourceStorage{ResourceType::IronOre, 10, 0}, 1}},
                             {TruckType::SmallIronOre}},
          BuildingDefinition{
              "Steel Mill",
              10,
+             1,
              0.5,
              {
                  ResourceProcessor{ResourceStorage{ResourceType::Steel, 10, 0}, 1},

@@ -8,11 +8,11 @@ struct ResourceProcessor
     // TODO: MAKE CLASS
     ResourceStorage storage;
     double rate;
-    double Process(double efficiency)
+    double process(double factor)
     {
-        auto const change = rate * efficiency;
+        auto const change = rate * factor;
         double changed;
-
+        // TODO: Might be usless with how building works now... rething add and take implementation
         if (change > 0)
         {
             changed = storage.add(change);
