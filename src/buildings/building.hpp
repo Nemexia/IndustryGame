@@ -40,7 +40,6 @@ class Building
     }
     void update()
     {
-        // TODO: FIX THIS
         double factor = get_building_definition(type_).conversion_speed;
         const double efficiency = get_building_definition(type_).efficiency;
         for (auto& processor : resource_processors_)

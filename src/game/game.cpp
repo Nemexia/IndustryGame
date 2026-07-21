@@ -37,15 +37,15 @@ void Game::handle_input_events()
         return Position{x, y};
     };
 
-    if (graphic_renderer_->is_key_released(Key::One))
+    if (graphic_renderer_->is_key_pressed(Key::One))
     {
         world_.add_building(BuildingType::CoalMine, random_position());
     }
-    else if (graphic_renderer_->is_key_released(Key::Two))
+    else if (graphic_renderer_->is_key_pressed(Key::Two))
     {
         world_.add_building(BuildingType::IronOreMine, random_position());
     }
-    else if (graphic_renderer_->is_key_released(Key::Three))
+    else if (graphic_renderer_->is_key_pressed(Key::Three))
     {
         world_.add_building(BuildingType::SteelMill, random_position());
     }

@@ -26,6 +26,6 @@ class IRenderer
     virtual void begin_drawing() = 0;
     virtual void end_drawing() = 0;
     virtual void clear_background(Color color) = 0;
-    virtual bool is_key_released(Key key) = 0;
+    virtual bool is_key_pressed(Key key) = 0;
 };
 } // namespace industry_game

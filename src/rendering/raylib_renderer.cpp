@@ -39,16 +39,16 @@ void RaylibRenderer::clear_background(Color color)
 {
     ClearBackground({color.r, color.g, color.b, 255});
 }
-bool RaylibRenderer::is_key_released(Key key)
+bool RaylibRenderer::is_key_pressed(Key key)
 {
     switch (key)
     {
     case Key::One:
-        return IsKeyReleased(KEY_ONE);
+        return IsKeyPressed(KEY_ONE);
     case Key::Two:
-        return IsKeyReleased(KEY_TWO);
+        return IsKeyPressed(KEY_TWO);
     case Key::Three:
-        return IsKeyReleased(KEY_THREE);
+        return IsKeyPressed(KEY_THREE);
     }
     return false;
 }
