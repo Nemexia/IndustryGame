@@ -1,37 +1,37 @@
 #include "world.hpp"
 
+#include <vector>
+
 #include "buildings/building.hpp"
 #include "buildings/building_definition.hpp"
 #include "core/id.hpp"
 #include "resources/resource_definition.hpp"
 
-#include <vector>
-
 namespace industry_game
 {
 void World::add_building(BuildingType type, Position position)
 {
-    BuildingID building_id = static_cast<BuildingID>(buildings_.size());
+    auto building_id = static_cast<BuildingID>(buildings_.size());
     std::vector<TruckID> trucks_made;
-    for (auto& processor : get_building_definition(type).resource_processors)
+    for (const auto& processor : get_building_definition(type).resource_processors)
     {
         if (processor.rate < 0)
             continue;
-        TruckID truck_id = static_cast<TruckID>(trucks_.size());
+        auto truck_id = static_cast<TruckID>(trucks_.size());
         trucks_made.emplace_back(truck_id);
 
         TruckType truck_type;
-        if (processor.storage.resource() == ResourceType::Coal)
+        if (processor.storage.resource() == ResourceType::coal)
         {
-            truck_type = TruckType::SmallCoal;
+            truck_type = TruckType::small_coal;
         }
-        else if (processor.storage.resource() == ResourceType::IronOre)
+        else if (processor.storage.resource() == ResourceType::iron_ore)
         {
-            truck_type = TruckType::SmallIronOre;
+            truck_type = TruckType::small_iron_ore;
         }
-        else if (processor.storage.resource() == ResourceType::Steel)
+        else if (processor.storage.resource() == ResourceType::steel)
         {
-            truck_type = TruckType::SmallSteel;
+            truck_type = TruckType::small_steel;
         }
         trucks_.emplace_back(truck_type, position, building_id);
     }

@@ -5,11 +5,11 @@ namespace industry_game
 {
 class ResourceStorage
 {
-  public:
+public:
     ResourceStorage(ResourceType resource, double capacity, double amount = 0.0)
-        : stored_amount_(amount)
-        , capacity_(capacity)
-        , resource_(resource)
+        : stored_amount_(amount),
+          capacity_(capacity),
+          resource_(resource)
     {
     }
     double add(double amount)
@@ -24,36 +24,36 @@ class ResourceStorage
         stored_amount_ -= removed;
         return removed;
     }
-    double stored() const
+    [[nodiscard]] double stored() const
     {
         return stored_amount_;
     }
-    double free_space() const
+    [[nodiscard]] double free_space() const
     {
         return capacity_ - stored_amount_;
     }
-    double capacity() const
+    [[nodiscard]] double capacity() const
     {
         return capacity_;
     }
-    ResourceType resource() const
+    [[nodiscard]] ResourceType resource() const
     {
         return resource_;
     }
-    bool empty() const
+    [[nodiscard]] bool empty() const
     {
         return stored_amount_ == 0.0;
     }
-    bool full() const
+    [[nodiscard]] bool full() const
     {
         return stored_amount_ == capacity_;
     }
-    double fill_ratio() const
+    [[nodiscard]] double fill_ratio() const
     {
         return stored_amount_ / capacity_;
     }
 
-  private:
+private:
     double stored_amount_;
     double capacity_;
     ResourceType resource_;

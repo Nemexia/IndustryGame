@@ -1,30 +1,31 @@
 #pragma once
+#include <string>
+
 #include "../rendering/irenderer.hpp"
 #include "../rendering/world_renderer.hpp"
 #include "../version.hpp"
 
-#include <string>
 
 namespace industry_game
 {
 inline constexpr std::string_view game_name = "IndustryGame";
 class Game
 {
-  public:
+public:
     Game(IRenderer* graphic_render, int width, int height, int fps)
-        : world_()
-        , name_(std::string(game_name) + " " + std::string(version))
-        , graphic_renderer_(graphic_render)
-        , width_(width)
-        , height_(height)
-        , fps_(fps)
-        , world_renderer_()
+        : world_(),
+          name_(std::string(game_name) + " " + std::string(version)),
+          graphic_renderer_(graphic_render),
+          width_(width),
+          height_(height),
+          fps_(fps),
+          world_renderer_()
     {
         graphic_renderer_->initialize(name_, width, height, fps);
     };
     void run();
 
-  private:
+private:
     void handle_input_events();
     void update();
     void draw();

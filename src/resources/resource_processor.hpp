@@ -10,7 +10,7 @@ struct ResourceProcessor
     double rate;
     double process(double factor)
     {
-        auto const change = rate * factor;
+        const auto change = rate * factor;
         double changed;
         // TODO: Might be usless with how building works now... rething add and take implementation
         if (change > 0)
@@ -23,16 +23,13 @@ struct ResourceProcessor
         }
         return changed;
     }
-    double rate_factor() const
+    [[nodiscard]] double rate_factor() const
     {
         if (rate < 0)
         {
             return storage.stored() / -rate;
         }
-        else
-        {
-            return storage.free_space() / rate;
-        }
+        return storage.free_space() / rate;
     }
 };
 } // namespace industry_game
