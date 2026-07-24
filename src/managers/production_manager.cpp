@@ -1,6 +1,6 @@
 #include "production_manager.hpp"
 
-#include "buildings/building_definition.hpp"
+#include "../buildings/building_definition.hpp"
 
 namespace industry_game
 {
@@ -31,9 +31,8 @@ void ProductionManager::produce_resources(std::vector<Building>& buildings)
         }
     }
 }
-} // namespace industry_game
-
 void industry_game::ProductionManager::fill_trucks(std::vector<Building>& buildings,
                                                    std::vector<Truck>& trucks)
 {
 }
+} // namespace industry_game
