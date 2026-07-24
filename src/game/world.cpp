@@ -15,21 +15,21 @@ void World::add_building(BuildingType type, Position position)
     std::vector<TruckID> trucks_made;
     for (const auto& processor : get_building_definition(type).resource_processors)
     {
-        if (processor.get_rate() < 0)
+        if (processor.rate() < 0)
             continue;
         auto truck_id = static_cast<TruckID>(trucks_.size());
         trucks_made.emplace_back(truck_id);
 
         TruckType truck_type;
-        if (processor.get_resource_type() == ResourceType::coal)
+        if (processor.resource_type() == ResourceType::coal)
         {
             truck_type = TruckType::small_coal;
         }
-        else if (processor.get_resource_type() == ResourceType::iron_ore)
+        else if (processor.resource_type() == ResourceType::iron_ore)
         {
             truck_type = TruckType::small_iron_ore;
         }
-        else if (processor.get_resource_type() == ResourceType::steel)
+        else if (processor.resource_type() == ResourceType::steel)
         {
             truck_type = TruckType::small_steel;
         }

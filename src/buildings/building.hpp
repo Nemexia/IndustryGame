@@ -21,23 +21,23 @@ public:
           trucks_(std::move(its_trucks))
     {
     }
-    [[nodiscard]] const Position& get_position() const
+    [[nodiscard]] const Position& position() const
     {
         return position_;
     }
-    [[nodiscard]] const double& get_size() const
+    [[nodiscard]] const double& size() const
     {
         return get_building_definition(type_).size;
     }
-    [[nodiscard]] Color get_color() const
+    [[nodiscard]] Color color() const
     {
         return get_resource_definition(
-                   get_building_definition(type_).resource_processors[0].get_resource_type())
+                   get_building_definition(type_).resource_processors[0].resource_type())
             .color;
     }
-    [[nodiscard]] double get_alpha() const
+    [[nodiscard]] double alpha() const
     {
-        return resource_processors_[0].get_fill_ratio() * 255;
+        return resource_processors_[0].fill_ratio() * 255;
     }
     void update()
     {
@@ -46,7 +46,7 @@ public:
         for (auto& processor : resource_processors_)
         {
             auto rate_factor = processor.rate_factor();
-            if (processor.get_rate() > 0)
+            if (processor.rate() > 0)
             {
                 rate_factor *= efficiency;
             }

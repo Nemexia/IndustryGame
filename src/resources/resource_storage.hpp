@@ -36,7 +36,7 @@ public:
     {
         return capacity_;
     }
-    [[nodiscard]] ResourceType resource() const
+    [[nodiscard]] ResourceType resource_type() const
     {
         return resource_;
     }

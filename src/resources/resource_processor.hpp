@@ -11,15 +11,15 @@ public:
     ResourceProcessor(ResourceStorage storage, double rate)
         : storage_(storage),
           rate_(rate) {};
-    [[nodiscard]] ResourceType get_resource_type() const
+    [[nodiscard]] ResourceType resource_type() const
     {
-        return storage_.resource();
+        return storage_.resource_type();
     }
-    [[nodiscard]] double get_rate() const
+    [[nodiscard]] double rate() const
     {
         return rate_;
     }
-    [[nodiscard]] double get_fill_ratio() const
+    [[nodiscard]] double fill_ratio() const
     {
         return storage_.fill_ratio();
     }

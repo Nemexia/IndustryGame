@@ -2,6 +2,7 @@
 #include "../core/id.hpp"
 #include "../core/position.hpp"
 #include "../resources/resource_storage.hpp"
+#include "resources/resource_definition.hpp"
 #include "truck_definition.hpp"
 
 namespace industry_game
@@ -20,21 +21,29 @@ public:
           target_(home_base),
           type_(type) {};
 
-    [[nodiscard]] Position get_position() const
+    [[nodiscard]] Position position() const
     {
         return position_;
     }
-    [[nodiscard]] double get_size() const
+    [[nodiscard]] double size() const
     {
         return cargo_.capacity();
     }
-    [[nodiscard]] Color get_color() const
+    [[nodiscard]] Color color() const
     {
-        return get_resource_definition(cargo_.resource()).color;
+        return get_resource_definition(cargo_.resource_type()).color;
     }
-    [[nodiscard]] double get_alpha() const
+    [[nodiscard]] double alpha() const
     {
         return cargo_.fill_ratio() * 255;
+    }
+    [[nodiscard]] ResourceType resource_type() const
+    {
+        return cargo_.resource_type();
+    }
+    [[nodiscard]] double resource_amount() const
+    {
+        return cargo_.stored();
     }
 
 private:
