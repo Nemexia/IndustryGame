@@ -4,7 +4,6 @@
 
 #include "buildings/building_definition.hpp"
 #include "core/position.hpp"
-#include "raylib.h"
 
 namespace industry_game
 {
@@ -53,6 +52,6 @@ void Game::handle_input_events()
 }
 void Game::update()
 {
-    world_.update();
+    production_manager_.update(world_.get_buildings(), world_.get_trucks());
 }
 } // namespace industry_game

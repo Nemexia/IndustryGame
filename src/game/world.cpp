@@ -37,11 +37,4 @@ void World::add_building(BuildingType type, Position position)
     }
     buildings_.emplace_back(type, position, trucks_made);
 }
-void World::update()
-{
-    for (auto& building : buildings_)
-    {
-        building.update();
-    }
-}
 } // namespace industry_game

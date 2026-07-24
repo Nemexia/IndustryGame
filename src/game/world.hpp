@@ -11,12 +11,19 @@ class World
 {
 public:
     void add_building(BuildingType type, Position position);
-    void update();
     [[nodiscard]] const std::vector<Building>& get_buildings() const
     {
         return buildings_;
     }
     [[nodiscard]] const std::vector<Truck>& get_trucks() const
+    {
+        return trucks_;
+    }
+    std::vector<Building>& get_buildings()
+    {
+        return buildings_;
+    }
+    std::vector<Truck>& get_trucks()
     {
         return trucks_;
     }

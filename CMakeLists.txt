@@ -35,6 +35,8 @@ target_sources(
     src/buildings/building.hpp
     src/rendering/world_renderer.cpp
     src/version.hpp
+    src/managers/production_manager.hpp
+    src/managers/production_manager.cpp
 )
 
 target_include_directories(IndustryGame PRIVATE src)
