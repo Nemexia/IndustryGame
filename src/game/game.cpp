@@ -4,7 +4,6 @@
 
 #include "buildings/building_definition.hpp"
 #include "core/position.hpp"
-#include "raylib.h"
 
 namespace industry_game
 {
