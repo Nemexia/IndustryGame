@@ -32,12 +32,12 @@ public:
     [[nodiscard]] Color get_color() const
     {
         return get_resource_definition(
-                   get_building_definition(type_).resource_processors[0].storage.resource())
+                   get_building_definition(type_).resource_processors[0].get_resource_type())
             .color;
     }
     [[nodiscard]] double get_alpha() const
     {
-        return resource_processors_[0].storage.fill_ratio() * 255;
+        return resource_processors_[0].get_fill_ratio() * 255;
     }
     void update()
     {
@@ -46,7 +46,7 @@ public:
         for (auto& processor : resource_processors_)
         {
             auto rate_factor = processor.rate_factor();
-            if (processor.rate > 0)
+            if (processor.get_rate() > 0)
             {
                 rate_factor *= efficiency;
             }

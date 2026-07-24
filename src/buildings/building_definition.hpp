@@ -34,16 +34,15 @@ inline const std::array<BuildingDefinition, static_cast<std::size_t>(BuildingTyp
                             .conversion_speed = 1,
                             .efficiency = 0.5,
                             .resource_processors = {ResourceProcessor{
-                                .storage = ResourceStorage{ResourceType::coal, 10, 0}, .rate = 1}},
+                                ResourceStorage{ResourceType::coal, 10, 0}, 1}},
                             .trucks = {TruckType::small_coal}},
-         BuildingDefinition{
-             .name = "Iron Ore Mine",
-             .size = 10,
-             .conversion_speed = 1,
-             .efficiency = 0.5,
-             .resource_processors = {ResourceProcessor{
-                 .storage = ResourceStorage{ResourceType::iron_ore, 10, 0}, .rate = 1}},
-             .trucks = {TruckType::small_iron_ore}},
+         BuildingDefinition{.name = "Iron Ore Mine",
+                            .size = 10,
+                            .conversion_speed = 1,
+                            .efficiency = 0.5,
+                            .resource_processors = {ResourceProcessor{
+                                ResourceStorage{ResourceType::iron_ore, 10, 0}, 1}},
+                            .trucks = {TruckType::small_iron_ore}},
          BuildingDefinition{
              .name = "Steel Mill",
              .size = 10,
@@ -51,12 +50,9 @@ inline const std::array<BuildingDefinition, static_cast<std::size_t>(BuildingTyp
              .efficiency = 0.5,
              .resource_processors =
                  {
-                     ResourceProcessor{.storage = ResourceStorage{ResourceType::steel, 10, 0},
-                                       .rate = 1},
-                     ResourceProcessor{.storage = ResourceStorage{ResourceType::coal, 10, 0},
-                                       .rate = -1},
-                     ResourceProcessor{.storage = ResourceStorage{ResourceType::iron_ore, 10, 0},
-                                       .rate = -1},
+                     ResourceProcessor{ResourceStorage{ResourceType::steel, 10, 0}, 1},
+                     ResourceProcessor{ResourceStorage{ResourceType::coal, 10, 0}, -1},
+                     ResourceProcessor{ResourceStorage{ResourceType::iron_ore, 10, 0}, -1},
                  },
              .trucks = {TruckType::small_steel}}}};
 
