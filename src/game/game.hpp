@@ -1,11 +1,11 @@
 #pragma once
 #include <string>
 
+#include "../managers/logistic_manager.hpp"
 #include "../managers/production_manager.hpp"
 #include "../rendering/irenderer.hpp"
 #include "../rendering/world_renderer.hpp"
 #include "../version.hpp"
-
 
 namespace industry_game
 {
@@ -38,5 +38,6 @@ private:
     int fps_;
     WorldRenderer world_renderer_;
     ProductionManager production_manager_;
+    LogisticManager logistic_manager_;
 };
 } // namespace industry_game

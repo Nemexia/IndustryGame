@@ -52,6 +52,7 @@ void Game::handle_input_events()
 }
 void Game::update()
 {
-    production_manager_.update(world_.get_buildings(), world_.get_trucks());
+    production_manager_.update(world_.get_buildings());
+    logistic_manager_.update(world_.get_buildings(), world_.get_trucks());
 }
 } // namespace industry_game

@@ -37,6 +37,8 @@ target_sources(
     src/version.hpp
     src/managers/production_manager.hpp
     src/managers/production_manager.cpp
+    src/managers/logistic_manager.hpp
+    src/managers/logistic_manager.cpp
 )
 
 target_include_directories(IndustryGame PRIVATE src)
