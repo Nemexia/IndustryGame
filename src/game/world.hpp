@@ -11,7 +11,6 @@ class World
 {
 public:
     void add_building(BuildingType type, Position position);
-    void update();
     [[nodiscard]] const std::vector<Building>& get_buildings() const
     {
         return buildings_;
