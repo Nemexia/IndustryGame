@@ -2,7 +2,6 @@
 #include "resource_definition.hpp"
 #include "resource_storage.hpp"
 
-
 namespace industry_game
 {
 class ResourceProcessor
@@ -45,6 +44,14 @@ public:
             return storage_.stored() / -rate_;
         }
         return storage_.free_space() / rate_;
+    }
+    [[nodiscard]] double store_amount() const
+    {
+        return storage_.stored();
+    }
+    double take(double amount)
+    {
+        return storage_.take(amount);
     }
 
 private:

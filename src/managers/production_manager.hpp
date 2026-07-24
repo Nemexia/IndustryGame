@@ -12,5 +12,6 @@ class ProductionManager
 
   private:
     void produce_resources(std::vector<Building>& buildings);
+    void fill_trucks(std::vector<Building>& buildings, std::vector<Truck>& trucks);
 };
 } // namespace industry_game

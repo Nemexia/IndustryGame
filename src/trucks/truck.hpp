@@ -5,7 +5,6 @@
 #include "../resources/resource_storage.hpp"
 #include "truck_definition.hpp"
 
-
 namespace industry_game
 {
 class Truck
@@ -22,7 +21,7 @@ public:
           target_(home_base),
           type_(type) {};
 
-    [[nodiscard]] Position position() const
+    [[nodiscard]] const Position& position() const
     {
         return position_;
     }
@@ -45,6 +44,18 @@ public:
     [[nodiscard]] double resource_amount() const
     {
         return cargo_.stored();
+    }
+    [[nodiscard]] BuildingID home_base() const
+    {
+        return home_base_;
+    }
+    [[nodiscard]] bool is_full() const
+    {
+        return cargo_.full();
+    }
+    double fill(double amount)
+    {
+        return cargo_.add(amount);
     }
 
 private:

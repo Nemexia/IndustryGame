@@ -43,9 +43,13 @@ public:
     {
         return resource_processors_;
     }
-    BuildingType get_type() const
+    [[nodiscard]] BuildingType get_type() const
     {
         return type_;
+    }
+    std::vector<TruckID>& get_trucks()
+    {
+        return trucks_;
     }
 
 private:
