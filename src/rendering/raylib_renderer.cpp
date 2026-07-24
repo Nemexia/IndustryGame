@@ -4,13 +4,15 @@
 
 namespace industry_game
 {
-void RaylibRenderer::draw_circle(Position position, int radius, Color color,
+void RaylibRenderer::draw_circle(Position position,
+                                 int radius,
+                                 Color color,
                                  unsigned char alpha) const
 {
     DrawCircle(position.x, position.y, radius, {color.r, color.g, color.b, alpha});
 }
-void RaylibRenderer::draw_rectangle(Position position, int width, int height, Color color,
-                                    unsigned char alpha) const
+void RaylibRenderer::draw_rectangle(
+    Position position, int width, int height, Color color, unsigned char alpha) const
 {
     DrawRectangle(position.x, position.y, width, height, {color.r, color.g, color.b, alpha});
 }
@@ -39,16 +41,16 @@ void RaylibRenderer::clear_background(Color color)
 {
     ClearBackground({color.r, color.g, color.b, 255});
 }
-bool RaylibRenderer::is_key_released(Key key)
+bool RaylibRenderer::is_key_pressed(Key key)
 {
     switch (key)
     {
-    case Key::One:
-        return IsKeyReleased(KEY_ONE);
-    case Key::Two:
-        return IsKeyReleased(KEY_TWO);
-    case Key::Three:
-        return IsKeyReleased(KEY_THREE);
+    case Key::one:
+        return IsKeyPressed(KEY_ONE);
+    case Key::two:
+        return IsKeyPressed(KEY_TWO);
+    case Key::three:
+        return IsKeyPressed(KEY_THREE);
     }
     return false;
 }

@@ -17,14 +17,17 @@ void WorldRenderer::draw(const World& world, IRenderer& renderer) const
 }
 void WorldRenderer::draw(const Building& building, IRenderer& renderer) const
 {
-    const Position position{building.get_position().x - building.get_size() / 2,
-                            building.get_position().y - building.get_size() / 2};
-    renderer.draw_rectangle(position, building.get_size(), building.get_size(),
-                            building.get_color(), building.get_alpha());
+    const Position position{.x = building.position().x - (building.size() / 2),
+                            .y = building.position().y - (building.size() / 2)};
+    renderer.draw_rectangle(position,
+                            building.size(),
+                            building.size(),
+                            building.color(),
+                            building.alpha());
 }
 void WorldRenderer::draw(const Truck& truck, IRenderer& renderer) const
 {
-    renderer.draw_circle(truck.get_position(), truck.get_size(), truck.get_color(),
-                         truck.get_alpha());
+    renderer.draw_circle(
+        truck.position(), truck.size(), truck.color(), truck.alpha());
 }
 } // namespace industry_game

@@ -1,73 +1,64 @@
 #pragma once
+#include <utility>
+#include <vector>
+
+#include "../core/color.hpp"
 #include "../core/id.hpp"
 #include "../core/position.hpp"
+#include "../resources/resource_definition.hpp"
+#include "../resources/resource_processor.hpp"
 #include "building_definition.hpp"
-#include "core/color.hpp"
-#include "resources/resource_definition.hpp"
-#include "resources/resource_processor.hpp"
-
-#include <array>
-#include <vector>
 
 namespace industry_game
 {
 class Building
 {
-  public:
+public:
     Building(BuildingType type, Position position, std::vector<TruckID> its_trucks)
-        : type_(type)
-        , position_(position)
-        , resource_processors_(get_building_definition(type).resource_processors)
-        , trucks_(its_trucks)
+        : type_(type),
+          position_(position),
+          resource_processors_(get_building_definition(type).resource_processors),
+          trucks_(std::move(its_trucks))
     {
     }
-    const Position& get_position() const
+    [[nodiscard]] const Position& position() const
     {
         return position_;
     }
-    const double& get_size() const
+    [[nodiscard]] const double& size() const
     {
         return get_building_definition(type_).size;
     }
-    const Color get_color() const
+    [[nodiscard]] Color color() const
     {
         return get_resource_definition(
-                   get_building_definition(type_).resource_processors[0].storage.resource.id)
+                   get_building_definition(type_).resource_processors[0].resource_type())
             .color;
     }
-    const double get_alpha() const
+    [[nodiscard]] double alpha() const
     {
-        auto const& capacity = resource_processors_[0].storage.capacity;
-        auto const& current = resource_processors_[0].storage.resource.amount;
-        return current / capacity * 255;
+        return resource_processors_[0].fill_ratio() * 255;
     }
     void update()
     {
+        double factor = get_building_definition(type_).conversion_speed;
+        const double efficiency = get_building_definition(type_).efficiency;
         for (auto& processor : resource_processors_)
         {
-            auto const delta = processor.rate * get_building_definition(type_).efficiency;
-            if (delta > 0)
+            auto rate_factor = processor.rate_factor();
+            if (processor.rate() > 0)
             {
-                if (processor.storage.resource.amount + delta > processor.storage.capacity)
-                {
-                    return;
-                }
+                rate_factor *= efficiency;
             }
-            else
-            {
-                if (processor.storage.resource.amount + delta < 0)
-                {
-                    return;
-                }
-            }
+            factor = std::min(factor, rate_factor);
         }
         for (auto& processor : resource_processors_)
         {
-            processor.update(get_building_definition(type_).efficiency);
+            processor.process(factor);
         }
     }
 
-  private:
+private:
     Position position_;
     std::vector<ResourceProcessor> resource_processors_;
     std::vector<TruckID> trucks_;

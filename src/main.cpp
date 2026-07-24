@@ -1,8 +1,5 @@
 #include "game/game.hpp"
 #include "rendering/raylib_renderer.hpp"
-#include "version.hpp"
-
-#include <string>
 
 int main()
 {

@@ -1,24 +1,84 @@
 Checks: >
+  -*,
   bugprone-*,
-  performance-*,
-  modernize-*,
-  readability-*,
-  misc-*,
   clang-analyzer-*,
-
+  concurrency-*,
+  cppcoreguidelines-*,
+  hicpp-*,
+  misc-*,
+  modernize-*,
+  performance-*,
+  portability-*,
+  readability-*,
+  -hicpp-no-array-decay,
+  -hicpp-braces-around-statements,
+  -readability-braces-around-statements,
   -modernize-use-trailing-return-type,
-  -readability-magic-numbers,
-  -modernize-use-nodiscard
+  -misc-non-private-member-variables-in-classes,
+  -cppcoreguidelines-non-private-member-variables-in-classes
 
-WarningsAsErrors: ""
-
-HeaderFilterRegex: ".*"
-AnalyzeTemporaryDtors: false
+WarningsAsErrors: ''
+HeaderFilterRegex: '^(?!.*(third_party|external|vendor)).*'
 FormatStyle: file
 
 CheckOptions:
-  - key: modernize-loop-convert.MinConfidence
-    value: reasonable
+  # --- Naming conventions (your custom scheme) ---
+  - key: readability-identifier-naming.ClassCase
+    value: CamelCase
+  - key: readability-identifier-naming.StructCase
+    value: CamelCase
+  - key: readability-identifier-naming.EnumCase
+    value: CamelCase
+  - key: readability-identifier-naming.UnionCase
+    value: CamelCase
+
+  - key: readability-identifier-naming.FunctionCase
+    value: lower_case
+  - key: readability-identifier-naming.MethodCase
+    value: lower_case
 
   - key: readability-identifier-naming.VariableCase
     value: lower_case
+  - key: readability-identifier-naming.ParameterCase
+    value: lower_case
+  - key: readability-identifier-naming.LocalVariableCase
+    value: lower_case
+
+  - key: readability-identifier-naming.MemberCase
+    value: lower_case
+  - key: readability-identifier-naming.PrivateMemberSuffix
+    value: '_'
+  - key: readability-identifier-naming.ProtectedMemberSuffix
+    value: '_'
+  - key: readability-identifier-naming.PublicMemberSuffix
+    value: ''
+
+  - key: readability-identifier-naming.ConstantCase
+    value: lower_case
+  - key: readability-identifier-naming.GlobalConstantCase
+    value: lower_case
+  - key: readability-identifier-naming.StaticConstantCase
+    value: lower_case
+  - key: readability-identifier-naming.EnumConstantCase
+    value: lower_case
+
+  - key: readability-identifier-naming.NamespaceCase
+    value: lower_case
+
+  - key: readability-identifier-naming.MacroDefinitionCase
+    value: UPPER_CASE
+
+  - key: readability-identifier-naming.TemplateParameterCase
+    value: CamelCase
+
+  # --- Behavior tuning ---
+  - key: modernize-use-nullptr.NullMacros
+    value: 'NULL'
+  - key: performance-unnecessary-value-param.AllowedTypes
+    value: ''
+  - key: cppcoreguidelines-avoid-magic-numbers.IgnoredIntegerValues
+    value: '0;1;2;100'
+  - key: readability-magic-numbers.IgnoredIntegerValues
+    value: '0;1;2;100'
+  - key: readability-function-cognitive-complexity.Threshold
+    value: '25'

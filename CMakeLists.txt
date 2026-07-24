@@ -9,6 +9,7 @@ project(
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_executable(IndustryGame)
 target_sources(
@@ -26,7 +27,6 @@ target_sources(
     src/rendering/raylib_renderer.hpp
     src/rendering/world_renderer.hpp
     src/resources/resource_definition.hpp
-    src/resources/resource.hpp
     src/resources/resource_storage.hpp
     src/resources/resource_processor.hpp
     src/trucks/truck_definition.hpp
@@ -40,6 +40,6 @@ target_sources(
 target_include_directories(IndustryGame PRIVATE src)
 
 
-find_package(raylib CONFIG REQUIRED)
+add_subdirectory(external/raylib)
 
 target_link_libraries(IndustryGame PRIVATE raylib)

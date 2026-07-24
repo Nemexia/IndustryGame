@@ -1,45 +1,57 @@
 #pragma once
 #include "../core/id.hpp"
 #include "../core/position.hpp"
+#include "../resources/resource_definition.hpp"
+#include "../resources/resource_storage.hpp"
 #include "truck_definition.hpp"
+
 
 namespace industry_game
 {
 class Truck
 {
-  public:
+public:
     Truck(TruckType type, Position spawn_position, BuildingID home_base)
-        : cargo_({Resource{get_truck_definition(type).resource, 0.0},
-                  get_truck_definition(type).capacity})
-        , position_(spawn_position)
-        , home_base_(home_base)
-        , target(home_base)
-        , type_(type) {};
+        : cargo_({
+              get_truck_definition(type).resource,
+              get_truck_definition(type).capacity,
+              0.0,
+          }),
+          position_(spawn_position),
+          home_base_(home_base),
+          target_(home_base),
+          type_(type) {};
 
-    const Position get_position() const
+    [[nodiscard]] Position position() const
     {
         return position_;
     }
-    const double get_size() const
+    [[nodiscard]] double size() const
     {
-        return get_truck_definition(type_).size;
+        return cargo_.capacity();
     }
-    const Color get_color() const
+    [[nodiscard]] Color color() const
     {
-        return get_resource_definition(get_truck_definition(type_).resource).color;
+        return get_resource_definition(cargo_.resource_type()).color;
     }
-    const double get_alpha() const
+    [[nodiscard]] double alpha() const
     {
-        auto const& capacity = cargo_.capacity;
-        auto const& current = cargo_.resource.amount;
-        return current / capacity * 255;
+        return cargo_.fill_ratio() * 255;
+    }
+    [[nodiscard]] ResourceType resource_type() const
+    {
+        return cargo_.resource_type();
+    }
+    [[nodiscard]] double resource_amount() const
+    {
+        return cargo_.stored();
     }
 
-  private:
+private:
     ResourceStorage cargo_;
     Position position_;
     BuildingID home_base_;
-    BuildingID target;
+    BuildingID target_;
     TruckType type_;
 };
 } // namespace industry_game

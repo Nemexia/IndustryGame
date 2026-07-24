@@ -1,32 +1,42 @@
 #pragma once
-#include "../resources/resource_storage.hpp"
+#include <string_view>
+
+#include "../resources/resource_definition.hpp"
 
 namespace industry_game
 {
 enum class TruckType : std::uint8_t
 {
-    SmallCoal,
-    SmallIronOre,
-    SmallSteel,
+    small_coal,
+    small_iron_ore,
+    small_steel,
     count,
 };
 
 struct TruckDefinition
 {
-    const char* name;
-    double size;
+    std::string_view name;
     double speed;
     double capacity;
-    ResourceID resource;
+    ResourceType resource;
 };
 
 inline constexpr std::array<TruckDefinition, static_cast<std::size_t>(TruckType::count)>
-    truck_definitions = {{TruckDefinition{"Small Coal Truck", 5, 1, 10, ResourceID::Coal},
-                          TruckDefinition{"Small Iron Ore Truck", 5, 1, 10, ResourceID::IronOre},
-                          TruckDefinition{"Small Steel Truck", 5, 1, 10, ResourceID::Steel}}};
+    truck_definitions = {{TruckDefinition{.name = "Small Coal Truck",
+                                          .speed = 1,
+                                          .capacity = 10,
+                                          .resource = ResourceType::coal},
+                          TruckDefinition{.name = "Small Iron Ore Truck",
+                                          .speed = 1,
+                                          .capacity = 10,
+                                          .resource = ResourceType::iron_ore},
+                          TruckDefinition{.name = "Small Steel Truck",
+                                          .speed = 1,
+                                          .capacity = 10,
+                                          .resource = ResourceType::steel}}};
 
-constexpr const TruckDefinition& get_truck_definition(TruckType id)
+constexpr const TruckDefinition& get_truck_definition(TruckType type)
 {
-    return truck_definitions[static_cast<std::size_t>(id)];
+    return truck_definitions.at(std::to_underlying(type));
 }
 } // namespace industry_game
