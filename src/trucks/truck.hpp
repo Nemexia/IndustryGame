@@ -1,9 +1,10 @@
 #pragma once
 #include "../core/id.hpp"
 #include "../core/position.hpp"
+#include "../resources/resource_definition.hpp"
 #include "../resources/resource_storage.hpp"
-#include "resources/resource_definition.hpp"
 #include "truck_definition.hpp"
+
 
 namespace industry_game
 {
