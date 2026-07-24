@@ -7,14 +7,13 @@ namespace industry_game
 void ProductionManager::update(std::vector<Building>& buildings, std::vector<Truck>& trucks)
 {
     produce_resources(buildings);
-    fill_trucks(buildings, trucks);
 }
 void ProductionManager::produce_resources(std::vector<Building>& buildings)
 {
     for (auto& building : buildings)
     {
         double factor =
-            get_building_definition(building.get_type()).conversion_speed; // TODOES: make method
+            get_building_definition(building.get_type()).conversion_speed; 
         const double efficiency = get_building_definition(building.get_type()).efficiency;
         for (auto& processor : building.get_resource_processors())
         {
@@ -31,8 +30,5 @@ void ProductionManager::produce_resources(std::vector<Building>& buildings)
         }
     }
 }
-void industry_game::ProductionManager::fill_trucks(std::vector<Building>& buildings,
-                                                   std::vector<Truck>& trucks)
-{
-}
+
 } // namespace industry_game
