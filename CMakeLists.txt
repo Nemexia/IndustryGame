@@ -40,6 +40,6 @@ target_sources(
 target_include_directories(IndustryGame PRIVATE src)
 
 
-find_package(raylib CONFIG REQUIRED)
+add_subdirectory(external/raylib)
 
 target_link_libraries(IndustryGame PRIVATE raylib)
